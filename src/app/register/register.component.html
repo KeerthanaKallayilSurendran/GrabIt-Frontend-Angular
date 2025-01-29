@@ -1,0 +1,72 @@
+<div class="h-svh bg-black flex justify-center items-center">
+  <div class="px-10 py-4 w-[700px] border rounded-md">
+    <h1 class="text-center mb-5 text-white font-bold text-4xl pt-3">
+      Register
+    </h1>
+    <form [formGroup]="userForm" (ngSubmit)="addUser()">
+      <div class="pb-5">
+        <label for="username" class="text-white font-semibold pb-2"
+          >Username</label
+        >
+        <input
+          type="text"
+          placeholder="Enter Your Username"
+          pInputText
+          class="w-full"
+          name="username"
+          formControlName="username"
+        />
+        @if(userForm.get('username')?.errors &&
+        userForm.get('username')?.touched){
+        <small class="block p-error text-red-600">
+          <span>Username is required</span>
+        </small>
+        }
+      </div>
+      <div class="pb-5">
+        <label for="email" class="text-white font-semibold pb-2">Email</label>
+        <input
+          type="email"
+          placeholder="abc@gmail.com"
+          pInputText
+          class="w-full"
+          name="email"
+          formControlName="email"
+        />
+        @if(userForm.get('email')?.errors && userForm.get('email')?.touched){
+        <small class="block p-error text-red-600">
+          <span>Email is required</span>
+        </small>
+        }
+      </div>
+      <div class="pb-5">
+        <label for="password" class="text-white font-semibold pb-2"
+          >Password</label
+        >
+        <input
+          type="password"
+          placeholder="Password"
+          pInputText
+          class="w-full"
+          name="password"
+          formControlName="password"
+        />
+        @if(userForm.get('password')?.errors &&
+        userForm.get('password')?.touched){
+        <small class="block p-error text-red-600">
+          <span>Password is required</span>
+        </small>
+        }
+      </div>
+      <div class="text-center">
+        <p-button
+          type="submit"
+          label="Register"
+          styleClass="!bg-[#ae9b846b] !border-[#ae9b846b] !text-white"
+          [disabled]="userForm.invalid"
+        >
+        </p-button>
+      </div>
+    </form>
+  </div>
+</div>

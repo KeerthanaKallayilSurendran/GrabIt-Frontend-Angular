@@ -1,0 +1,150 @@
+<app-header></app-header>
+<div class="min-h-svh bg-black">
+  <div class="contact"></div>
+
+  <div class="grid md:grid-cols-2 md:px-28 mt-5">
+    <div class="grid-cols-1 w-full">
+      <h1 class="text-4xl text-white font-bold">
+        Contact <span class="text-[#ae9b84]">Us</span>
+      </h1>
+      <p class="w-4/6 text-white text-xl pt-4 text-justify">
+        Contact us for questions, technical assistance, or other doubts via the
+        contact information provided.
+      </p>
+      <div class="flex items-center pt-2">
+        <button
+          class="w-12 h-12 rounded-full bg-[#ae9b8438] text-white font-bold"
+        >
+          <i class="fa-solid fa-phone"></i>
+        </button>
+        <p class="text-lg text-white ps-3 font-semibold">+91 9876543210</p>
+      </div>
+      <div class="flex items-center pt-2">
+        <button
+          class="w-12 h-12 rounded-full bg-[#ae9b8438] text-white font-bold"
+        >
+          <i class="fa-solid fa-envelope"></i>
+        </button>
+        <p class="text-lg text-white ps-3 font-semibold">
+          grabit&#64;gmail.com
+        </p>
+      </div>
+      <h3 class="font-bold pt-3 pb-2 text-xl text-[#ae9b84]">Social Links</h3>
+      <div class="flex items-center pt-2">
+        <button
+          class="w-12 h-12 rounded-full bg-[#ae9b8438] text-white font-bold me-2"
+        >
+          <i class="text-lg font-bold fa-brands fa-facebook"></i>
+        </button>
+        <button
+          class="w-12 h-12 rounded-full bg-[#ae9b8438] text-white font-bold me-2"
+        >
+          <i class="text-lg font-bold fa-brands fa-instagram"></i>
+        </button>
+        <button
+          class="w-12 h-12 rounded-full bg-[#ae9b8438] text-white font-bold me-2"
+        >
+          <i class="text-lg font-bold fa-brands fa-youtube"></i>
+        </button>
+        <button
+          class="w-12 h-12 rounded-full bg-[#ae9b8438] text-white font-bold"
+        >
+          <i class="text-lg font-bold fa-brands fa-x"></i>
+        </button>
+      </div>
+    </div>
+    <div class="grid-cols-2 w-full">
+      <form
+        [formGroup]="testimonyForm"
+        (ngSubmit)="addTestimony()"
+        class="flex flex-col"
+      >
+        <div class="field text-white">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            pInputText
+            class="w-full"
+            name="name"
+            formControlName="name"
+          />
+          @if(testimonyForm.get('name')?.errors &&
+          testimonyForm.get('name')?.touched){
+          <small class="block p-error">
+            <span>Name is required</span>
+          </small>
+          }
+        </div>
+        <div class="flex w-full mt-4">
+          <div class="field text-white w-3/6 me-2">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              pInputText
+              class="w-full"
+              name="email"
+              formControlName="email"
+            />
+            @if(testimonyForm.get('email')?.errors &&
+            testimonyForm.get('email')?.touched){
+            <small class="block p-error">
+              <span>Email is required</span>
+            </small>
+            }
+          </div>
+          <div class="field text-white w-3/6">
+            <label for="email">Phone</label>
+            <input
+              type="text"
+              pInputText
+              class="w-full"
+              name="phone"
+              formControlName="phone"
+            />
+            @if(testimonyForm.get('phone')?.errors &&
+            testimonyForm.get('phone')?.touched){
+            <small class="block p-error">
+              <span>Phone Number is required</span>
+            </small>
+            }
+          </div>
+        </div>
+        <div class="field" class="mt-4 text-white">
+          <label for="message">Message</label>
+          <textarea
+            pTextarea
+            rows="10"
+            class="w-full"
+            name="message"
+            formControlName="message"
+          ></textarea>
+          @if(testimonyForm.get('message')?.errors &&
+          testimonyForm.get('message')?.touched){
+          <small class="block p-error">
+            <span>Message is required</span>
+          </small>
+          }
+        </div>
+        <div>
+          <p-button
+            type="submit"
+            label="Send"
+            styleClass="!bg-[#ae9b846b] !border-[#ae9b846b] !text-white"
+          ></p-button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="md:px-28">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62865.558327204!2d76.30948097754384!3d10.008813464709041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080c8e94a07a07%3A0x49921cdfae82660!2sKakkanad%2C%20Kerala!5e0!3m2!1sen!2sin!4v1737197535323!5m2!1sen!2sin"
+      height="450"
+      style="border: 0"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      class="w-full mt-5"
+    ></iframe>
+  </div>
+</div>
+<app-footer></app-footer>

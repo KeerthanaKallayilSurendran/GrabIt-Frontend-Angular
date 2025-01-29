@@ -1,0 +1,62 @@
+<app-header></app-header>
+<div class="flex">
+  <div class="w-1/6 bg-black py-5">
+    <button
+      (click)="getAllProducts()"
+      class="text-[#ae9b84] capitalize py-2 px-4 text-lg font-semibold"
+    >
+      All</button
+    ><br />
+    @for (category of categoriesArray; track $index) {
+    <button
+      (click)="getProdctsByCategory('category', category)"
+      class="text-[#ae9b84] capitalize py-2 px-4 text-lg font-semibold"
+    >
+      {{ category }}
+    </button>
+    <br />
+    }
+  </div>
+  <div class="w-5/6 text-white bg-black">
+    <input
+      [(ngModel)]="searchKey"
+      class="w-96 bg-transparent border rounded-xl p-2 float-end me-10"
+      type="text"
+      placeholder="Search Your Prdouct Name here"
+    />
+    <div class="bg-black py-5">
+      <div
+        class="grid w-full grid-cols-1 md:grid-cols-4 gap-10 px-5 py-4 color"
+      >
+        <!-- PRODUCT CARD -->
+        @if (allProducts.length>0) { @for (product of allProducts | search
+        :searchKey | paginate: { itemsPerPage: 12, currentPage: p }; track
+        $index) {
+        <div
+          (click)="viewProduct(product._id)"
+          class="col-span-1 flex flex-col justify-evenly items-center rounded border shadow border-white color p-3"
+        >
+          <img width="150px" height="150px" [src]="product.thumbnail" alt="" />
+          <h3 class="text-2xl font-bold py-2 text-center">
+            {{ product.title }}
+          </h3>
+          <p class="text-xl font-bold py-2">₹{{ product.price }}</p>
+          <div class="justify-center items-center w-4/6 flex">
+            <p class="text-sm font-bold py-2">
+              {{ product.reviews.length }} Reviews & {{ product.rating }} Rating
+            </p>
+          </div>
+        </div>
+        } @if ((allProducts | search :searchKey).length == 0) {
+        <div class="text-red-800 font-bold text-center">Product Not Found</div>
+        } }@else {
+        <div class="text-red-800 font-bold text-center">Product Not Found</div>
+        }
+      </div>
+      <div class="text-center mb-3">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

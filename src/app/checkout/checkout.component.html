@@ -1,0 +1,94 @@
+<app-header></app-header>
+<div class="h-svh bg-black w-full">
+  <div class="flex flex-col justify-center items-center text-white">
+    <div class="w-2/6">
+      <h1 class="text-xl font-bold pb-3">Delivery Address</h1>
+      <form class="w-full">
+        <div class="flex justify-between items-center mb-3 w-full">
+          <input
+            class="mr-3 w-full"
+            placeholder="Name"
+            type="text"
+            pInputText
+          />
+          <input
+            type="text"
+            class="w-full"
+            pInputText
+            placeholder="Phone Number"
+          />
+        </div>
+        <div class="flex justify-between items-center mb-3">
+          <input
+            class="mr-3 w-full"
+            placeholder="Pincode"
+            type="text"
+            pInputText
+          />
+          <input type="text" class="w-full" pInputText placeholder="Locality" />
+        </div>
+        <div class="mb-3">
+          <textarea
+            pTextarea
+            class="w-full"
+            rows="5"
+            placeholder="Address"
+          ></textarea>
+        </div>
+        <div class="flex justify-between items-center mb-3">
+          <input
+            class="mr-3 w-full"
+            placeholder="City/District/Town"
+            type="text"
+            pInputText
+          />
+          <p-select
+            class="w-full"
+            placeholder="Select State"
+            [options]="cities"
+          />
+        </div>
+        <div class="w-full mt-5">
+          <h1 class="text-xl font-bold pb-3">Order Details</h1>
+          @if (reqBody.length>0) {
+          <div class="w-full flex text-white">
+            <div class="w-full me-1">
+              @if(reqBody.length>0){ @for (item of reqBody; track $index) {
+              <div class="flex items-center">
+                <img
+                  height="150px"
+                  width="150px"
+                  [src]="item.thumbnail"
+                  alt=""
+                />
+                <div class="ps-3 w-2/6">
+                  <h1 class="text-2xl font-bold pb-2">{{ item.title }}</h1>
+                  <div class="flex justify-between items-center">
+                    <p class="text-lg">₹{{ item.price }}</p>
+                    <p>Quantity:{{ item.count }}</p>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              } }
+            </div>
+          </div>
+          }
+          <div class="flex justify-end w-full pt-3">
+            <h4 class="text-2xl font-bold text-emerald-700">
+              Total: ₹{{ totalPrice }}
+            </h4>
+          </div>
+        </div>
+        <div class="flex justify-center items-center">
+          <p-button
+            type="submit"
+            styleClass="!bg-[#ae9b846b] !border-[#ae9b846b] !text-white text-2xl font-bold"
+            >Pay</p-button
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

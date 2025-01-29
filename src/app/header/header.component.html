@@ -1,0 +1,25 @@
+<div class="bg-black md:px-5 py-2 flex justify-between">
+  <img class="cursor-pointer" routerLink="/" width="150px" src="1.png" alt="" />
+  @if(isLoggedin){
+  <div class="pr-5">
+    <p-button
+      styleClass="bg-black !border-none text-white font-bold"
+      (click)="menu.toggle($event)"
+      ><i class="fa-solid fa-user text-[#ae9b84]"></i>{{ loginUsername
+      }}<i class="fa-solid fa-caret-down text-[#ae9b84]"></i
+    ></p-button>
+    <p-tieredmenu #menu [model]="items" [popup]="true" />
+  </div>
+
+  }@else {
+  <div class="pr-5">
+    <p-button
+      styleClass="bg-black !border-none text-white font-bold"
+      (click)="menu.toggle($event)"
+      ><i class="fa-solid fa-user text-[#ae9b84]"></i
+      ><i class="fa-solid fa-caret-down text-[#ae9b84]"></i
+    ></p-button>
+    <p-tieredmenu #menu [model]="homeButton" [popup]="true" />
+  </div>
+  }
+</div>

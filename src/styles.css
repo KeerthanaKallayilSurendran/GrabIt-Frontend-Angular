@@ -1,1 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", serif;
+}
+
+h1 {
+  font-family: "Playwrite US Modern", serif;
+}
+
+h2 {
+  font-family: "Agu Display", serif;
+}
+
+h3 {
+  font-family: "Fira Code", serif;
+}
+
+.pnfh1 {
+  color: white;
+  font-family: "Luckiest Guy", serif;
+  letter-spacing: 25px;
+  font-size: 250px;
+}
+.pnfp {
+  font-family: "Agu Display", serif;
+}
+
+.color {
+  color: #ae9b84;
+}
+.bgcolor {
+  background-color: #ae9b84;
+}
+
+.contact-icon:hover {
+  background-color: #ae9b846b;
+}
+
+.contact-link {
+  width: 100%;
+  background-color: #ae9b8438;
+  padding: 10px 25px;
+  border-radius: 10px;
+}
+
+.contact {
+  background-image: url("../public/contact.png");
+  width: 100%;
+  height: 500px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
