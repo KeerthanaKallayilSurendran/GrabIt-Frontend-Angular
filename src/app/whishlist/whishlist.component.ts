@@ -24,7 +24,7 @@ export class WhishlistComponent {
   getAllWishlist(){
     this.api.getAllWishlist().subscribe((res:any)=>{
       this.wishlist = res
-      console.log(this.wishlist);
+      // console.log(this.wishlist);
       this.numberOfItem = this.wishlist.length
       
     })

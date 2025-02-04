@@ -38,8 +38,6 @@ export class ApiService {
   appendToken() {
     let headers = new HttpHeaders();
     const token = sessionStorage.getItem('token');
-    console.log(token);
-    
     if (token) {
       headers = headers.append('Authorization', `Bearer ${token}`);
     }
@@ -55,32 +53,79 @@ export class ApiService {
     );
   }
 
-  getAllWishlist(){
-    return this.http.get(`${this.server_url}/wishlist`, this.appendToken())
+  getAllWishlist() {
+    return this.http.get(`${this.server_url}/wishlist`, this.appendToken());
   }
 
-  removeProductWishlistApi(id:any){
-    return this.http.delete(`${this.server_url}/wishlist/${id}/remove`, this.appendToken())
+  removeProductWishlistApi(id: any) {
+    return this.http.delete(
+      `${this.server_url}/wishlist/${id}/remove`,
+      this.appendToken()
+    );
   }
 
-  addToCartApi(productId:any, reqBody:any){
-    return this.http.post(`${this.server_url}/products/${productId}/cart`, reqBody, this.appendToken())
+  addToCartApi(productId: any, reqBody: any) {
+    return this.http.post(
+      `${this.server_url}/products/${productId}/cart`,
+      reqBody,
+      this.appendToken()
+    );
   }
 
-  getAllCart(){
-    return this.http.get(`${this.server_url}/cart`, this.appendToken())
+  getAllCart() {
+    return this.http.get(`${this.server_url}/cart`, this.appendToken());
   }
 
-  updateProductCountApi(productId:string, reqBody:any){
-    return this.http.put(`${this.server_url}/cart/${productId}/updatecount`, reqBody, this.appendToken())
+  updateProductCountApi(productId: string, reqBody: any) {
+    return this.http.put(
+      `${this.server_url}/cart/${productId}/updatecount`,
+      reqBody,
+      this.appendToken()
+    );
   }
 
-  emptyCartProudctsApi(){
-    return this.http.delete(`${this.server_url}/cart-empty`, this.appendToken())
+  emptyCartProudctsApi() {
+    return this.http.delete(
+      `${this.server_url}/cart-empty`,
+      this.appendToken()
+    );
   }
 
-  removeProductCartApi(id:any){
-    return this.http.delete(`${this.server_url}/cart/${id}/remove`, this.appendToken())
+  removeProductCartApi(id: any) {
+    return this.http.delete(
+      `${this.server_url}/cart/${id}/remove`,
+      this.appendToken()
+    );
   }
 
+  checkoutProductOrderApi(reqbody: any) {
+    return this.http.post(
+      `${this.server_url}/order`,
+      reqbody,
+      this.appendToken()
+    );
+  }
+
+  paymentValidationApi(reqBody: any) {
+    return this.http.post(
+      `${this.server_url}/order/validate`,
+      reqBody,
+      this.appendToken()
+    );
+  }
+
+  getAllOrderDetailsApi() {
+    return this.http.get(`${this.server_url}/get-orders`, this.appendToken());
+  }
+
+  getUserDetailsApi() {
+    return this.http.get(`${this.server_url}/get-user`, this.appendToken());
+  }
+  updateUserDetailsApi(reqbody: any) {
+    return this.http.put(
+      `${this.server_url}/update-user`,
+      reqbody,
+      this.appendToken()
+    );
+  }
 }

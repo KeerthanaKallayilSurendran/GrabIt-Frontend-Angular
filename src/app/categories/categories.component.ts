@@ -33,8 +33,8 @@ export class CategoriesComponent {
       this.allProducts.forEach((product:any)=>{
         !this.categoriesArray.includes(product.category) && this.categoriesArray.push(product.category)
       })
-      console.log(this.allProducts);
-      console.log(this.categoriesArray);
+      // console.log(this.allProducts);
+      // console.log(this.categoriesArray);
     })
   }
 

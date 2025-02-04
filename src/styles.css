@@ -59,3 +59,8 @@ h3 {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+p-floatlabel input.p-inputtext {
+  display: block !important;
+  width: 100%;
+}

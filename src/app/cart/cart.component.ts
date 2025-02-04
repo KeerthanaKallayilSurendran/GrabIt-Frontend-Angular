@@ -26,12 +26,12 @@ export class CartComponent {
   getAllCart() {
     this.api.getAllCart().subscribe((res: any) => {
       this.cart = res;
-      console.log(this.cart);
+      // console.log(this.cart);
       this.numberOfItems = this.cart.length;
       this.totalPrice = this.cart
         .map((item: any) => item.price * item.count)
         .reduce((a: any, b: any) => a + b, 0);
-      console.log(this.totalPrice);
+      // console.log(this.totalPrice);
     });
   }
 

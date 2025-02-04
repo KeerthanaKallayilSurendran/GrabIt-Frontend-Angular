@@ -3,12 +3,14 @@
   <div class="flex flex-col justify-center items-center text-white">
     <div class="w-2/6">
       <h1 class="text-xl font-bold pb-3">Delivery Address</h1>
-      <form class="w-full">
+      <form class="w-full" [formGroup]="chekoutForm" (ngSubmit)="checkoutOrder()">
         <div class="flex justify-between items-center mb-3 w-full">
           <input
             class="mr-3 w-full"
             placeholder="Name"
             type="text"
+            formControlName="name"
+            name="name"
             pInputText
           />
           <input
@@ -16,6 +18,8 @@
             class="w-full"
             pInputText
             placeholder="Phone Number"
+            name="phonenumber"
+            formControlName="phonenumber"
           />
         </div>
         <div class="flex justify-between items-center mb-3">
@@ -24,8 +28,10 @@
             placeholder="Pincode"
             type="text"
             pInputText
+            name="pincode"
+            formControlName="pincode"
           />
-          <input type="text" class="w-full" pInputText placeholder="Locality" />
+          <input type="text" class="w-full" pInputText placeholder="Locality" name="locality" formControlName="locality" />
         </div>
         <div class="mb-3">
           <textarea
@@ -33,6 +39,8 @@
             class="w-full"
             rows="5"
             placeholder="Address"
+            name="address"
+            formControlName="address"
           ></textarea>
         </div>
         <div class="flex justify-between items-center mb-3">
@@ -41,19 +49,23 @@
             placeholder="City/District/Town"
             type="text"
             pInputText
+            name="city"
+            formControlName="city"
           />
           <p-select
             class="w-full"
             placeholder="Select State"
             [options]="cities"
+            name="state"
+            formControlName="state"
           />
         </div>
         <div class="w-full mt-5">
           <h1 class="text-xl font-bold pb-3">Order Details</h1>
-          @if (reqBody.length>0) {
+          @if (itemDetails.length>0) {
           <div class="w-full flex text-white">
             <div class="w-full me-1">
-              @if(reqBody.length>0){ @for (item of reqBody; track $index) {
+              @if(itemDetails.length>0){ @for (item of itemDetails; track $index) {
               <div class="flex items-center">
                 <img
                   height="150px"
@@ -84,7 +96,7 @@
           <p-button
             type="submit"
             styleClass="!bg-[#ae9b846b] !border-[#ae9b846b] !text-white text-2xl font-bold"
-            >Pay</p-button
+            >Cash on Delivery</p-button
           >
         </div>
       </form>

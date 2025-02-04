@@ -1,25 +1,109 @@
 <app-header></app-header>
 <div class="min-h-svh bg-black">
   <div class="flex justify-evenly pt-10 flex-wrap">
-    <div
-      class="bg-gray-900 text-white p-4 flex flex-col justify-center items-center rounded-md"
-    >
-      <h3 class="text-3xl uppercase">Keerthana</h3>
-      <img
-        height="150px"
-        width="150px"
-        src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png"
-        alt=""
-      />
-    </div>
-    <div
+    <form
+      [formGroup]="userForm"
+      (ngSubmit)="updateUser()"
       class="bg-gray-900 text-white p-4 flex flex-col justify-center items-center rounded-md"
     >
       <h1>Personal Details</h1>
-      <p>First Name: Keerthana</p>
-      <p>Last Name: Surendran</p>
-      <p>Gender: </p>
-    </div>
+      <label class="my-3">
+        <img
+          width="200px"
+          height="200px"
+          src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+          alt=""
+        />
+      </label>
+
+      <p-floatlabel class="mt-5">
+        <input
+          name="firstname"
+          formControlName="firstname"
+          id="firstname"
+          pInputText
+        />
+        <label for="firstname">First Name</label>
+      </p-floatlabel>
+
+      <p-floatlabel class="mt-5">
+        <input
+          name="lastname"
+          formControlName="lastname"
+          id="lastname"
+          pInputText
+        />
+        <label for="lastname">Last Name</label>
+      </p-floatlabel>
+
+      <p-floatlabel class="mt-5">
+        <input
+          name="username"
+          formControlName="username"
+          id="username"
+          pInputText
+        />
+        <label for="username">Username</label>
+      </p-floatlabel>
+
+      <p-floatlabel class="mt-5">
+        <input name="email" formControlName="email" id="email" pInputText />
+        <label for="email">Email</label>
+      </p-floatlabel>
+
+      <p-floatlabel class="mt-5">
+        <input
+          name="mobilenumber"
+          formControlName="mobilenumber"
+          id="mobilenumber"
+          pInputText
+        />
+        <label for="mobilenumber">Mobile Number</label>
+      </p-floatlabel>
+
+      <p-floatlabel class="mt-5">
+        <input
+          name="housename"
+          formControlName="housename"
+          id="housename"
+          pInputText
+        />
+        <label for="housename">House Name</label>
+      </p-floatlabel>
+
+      <p-floatlabel class="mt-5">
+        <input name="street" formControlName="street" id="street" pInputText />
+        <label for="street">Street</label>
+      </p-floatlabel>
+
+      <p-floatlabel class="mt-5">
+        <input name="city" formControlName="city" id="city" pInputText />
+        <label for="city">City</label>
+      </p-floatlabel>
+
+      <p-floatlabel class="mt-5">
+        <input name="state" formControlName="state" id="state" pInputText />
+        <label for="state">State</label>
+      </p-floatlabel>
+
+      <p-floatlabel class="mt-5">
+        <input
+          name="postalcode"
+          formControlName="postalcode"
+          id="postalcode"
+          pInputText
+        />
+        <label for="postalcode">Postal Code</label>
+      </p-floatlabel>
+
+      <div class="text-center w-full flex justify-center">
+        <p-button
+          type="submit"
+          label="Update"
+          styleClass="!bg-[#ae9b846b] !border-[#ae9b846b] !text-white mt-5"
+        />
+      </div>
+    </form>
   </div>
 </div>
 <app-footer></app-footer>
