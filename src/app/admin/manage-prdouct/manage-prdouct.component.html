@@ -1,0 +1,82 @@
+<div class="grid grid-cols-9 gap-2">
+  <div class="col-span-2">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-span-7 p-5">
+    <p-fluid>
+      <h1 *ngIf="!id" class="text-center text-3xl font-bold">Add Product</h1>
+      <h1 *ngIf="id" class="text-center text-3xl font-bold">Edit Product</h1>
+
+      <div class="grid grid-cols-2 gap-4 card p-3 mt-3">
+        <div>
+          <input
+            [(ngModel)]="productDetails.title"
+            type="text"
+            pInputText
+            placeholder="Product Title"
+          />
+        </div>
+        <div>
+          <input
+            [(ngModel)]="productDetails.category"
+            type="text"
+            pInputText
+            placeholder="Product Category"
+          />
+        </div>
+        <div class="col-span-full">
+          <textarea
+            [(ngModel)]="productDetails.description"
+            rows="5"
+            cols="30"
+            pTextarea
+            placeholder="Product Description"
+          ></textarea>
+        </div>
+        <div>
+          <p-inputnumber
+            [(ngModel)]="productDetails.price"
+            placeholder="Product Price"
+            mode="currency"
+            inputId="currency-india"
+            currency="INR"
+            currencyDisplay="code"
+            locale="en-IN"
+          />
+        </div>
+        <div>
+          <input
+            [(ngModel)]="productDetails.returnPolicy"
+            type="text"
+            pInputText
+            placeholder="Product Return Policy"
+          />
+        </div>
+        <div class="col-span-full">
+          <input
+            [(ngModel)]="productDetails.thumbnail"
+            type="text"
+            pInputText
+            placeholder="Product Image Url"
+          />
+        </div>
+        <div class="col-span-full text-center">
+          <button
+            *ngIf="!id"
+            (click)="addProduct()"
+            class="px-3 py-2 rounded bg-black text-white"
+          >
+            Add
+          </button>
+          <button
+            *ngIf="id"
+            (click)="editProduct()"
+            class="px-3 py-2 rounded bg-black text-white"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </p-fluid>
+  </div>
+</div>

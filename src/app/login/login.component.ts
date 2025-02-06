@@ -40,7 +40,7 @@ export class LoginComponent {
           if(res.user.role==='User'){
             this.router.navigateByUrl('/')
           }else{
-            // admin navigate
+            this.router.navigateByUrl('/admin')
           }
         },
         error:(reason:any)=>{

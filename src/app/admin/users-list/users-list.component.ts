@@ -1,0 +1,27 @@
+import { Component } from '@angular/core';
+import { ApiService } from '../../service/api.service';
+
+
+@Component({
+  selector: 'app-users-list',
+  templateUrl: './users-list.component.html',
+  styleUrl: './users-list.component.css'
+})
+export class UsersListComponent {
+  allUsers:any = []
+  constructor(private api:ApiService){}
+
+  ngOnInit(){
+    this.getAllUsers()
+  }
+
+  getAllUsers(){
+    this.api.getAllUserApi().subscribe({
+      next:(res:any)=>{
+        console.log(res);
+        this.allUsers = res
+      }
+    })
+  }
+
+}

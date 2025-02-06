@@ -121,6 +121,7 @@ export class ApiService {
   getUserDetailsApi() {
     return this.http.get(`${this.server_url}/get-user`, this.appendToken());
   }
+  
   updateUserDetailsApi(reqbody: any) {
     return this.http.put(
       `${this.server_url}/update-user`,
@@ -128,4 +129,33 @@ export class ApiService {
       this.appendToken()
     );
   }
+
+  getAllUserApi() {
+    return this.http.get(`${this.server_url}/all-users`, this.appendToken());
+  }
+
+  getAllOrderApi() {
+    return this.http.get(`${this.server_url}/all-orders`, this.appendToken());
+  }
+
+  getAllMessageApi() {
+    return this.http.get(`${this.server_url}/all-message`, this.appendToken());
+  }
+
+  addProductApi(reqBody:any) {
+    return this.http.post(
+      `${this.server_url}/add-product`,
+      reqBody,
+      this.appendToken()
+    );
+  }
+
+  updateProductApi(id:any,reqBody:any){
+    return this.http.put(`${this.server_url}/product/${id}/edit`, reqBody, this.appendToken())
+  }
+
+  deleteProductApi(id:any){
+    return this.http.delete(`${this.server_url}/product/${id}/delete`, this.appendToken())
+  }
+
 }

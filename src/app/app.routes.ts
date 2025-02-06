@@ -14,6 +14,11 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ContactpageComponent } from './contactpage/contactpage.component';
 
 export const routes: Routes = [
+  // lazy loading admin
+  {
+    path:'admin',
+    loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)
+  },
   // http://localhost:4200/
   {
     path: '',

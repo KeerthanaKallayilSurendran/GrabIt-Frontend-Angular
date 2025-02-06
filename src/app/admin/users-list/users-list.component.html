@@ -1,0 +1,30 @@
+<div class="grid grid-cols-9 gap-2">
+  <div class="col-span-2">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-span-7 p-5">
+    <h1 class="text-center text-3xl font-bold pb-3">All Users List</h1>
+    <div class="card">
+      <p-table
+        *ngIf="allUsers.length > 0"
+        [value]="allUsers"
+        [tableStyle]="{ 'min-width': '50rem' }"
+      >
+        <ng-template #header>
+          <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Email</th>
+          </tr>
+        </ng-template>
+        <ng-template #body let-user let-i="rowIndex" >
+          <tr>
+            <td>{{ i + 1 }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
