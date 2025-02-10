@@ -17,6 +17,10 @@ import { SearchPipe } from '../pipes/search.pipe';
 import { Fluid } from 'primeng/fluid';
 import { TextareaModule } from 'primeng/textarea';
 import { InputNumber } from 'primeng/inputnumber';
+import { DatePicker } from 'primeng/datepicker';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { Dialog } from 'primeng/dialog';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +43,10 @@ import { InputNumber } from 'primeng/inputnumber';
     SearchPipe,
     Fluid, 
     TextareaModule,
-    InputNumber
+    InputNumber,
+    DatePicker,
+    HighchartsChartModule,
+    Dialog
   ]
 })
 export class AdminModule { }

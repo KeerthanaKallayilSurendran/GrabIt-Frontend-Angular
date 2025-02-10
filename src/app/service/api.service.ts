@@ -158,4 +158,42 @@ export class ApiService {
     return this.http.delete(`${this.server_url}/product/${id}/delete`, this.appendToken())
   }
 
+  getChartData() {
+    this.getAllProductsApi().subscribe((res: any) => {
+      let downloadArrayList: any = [];
+      let output: any = {};
+      res.forEach((item: any) => {
+        let category = item.category;
+        console.log(category);
+        if (output.hasOwnProperty(category)) {
+          output[category] = output[category] + 1;
+        } else {
+          output[category] = 1;
+        }
+      });
+      for (let category in output) {
+        downloadArrayList.push({ name: category, y: output[category] });
+        console.log(downloadArrayList);
+      }
+      console.log(downloadArrayList);
+      localStorage.setItem('chart', JSON.stringify(downloadArrayList));
+    });
+  }
+
+  updateAdminDetailsApi(reqbody: any) {
+    return this.http.put(
+      `${this.server_url}/edit-admin`,
+      reqbody,
+      this.appendToken()
+    );
+  }
+
+  getAdminDetailsApi(){
+    return this.http.get(`${this.server_url}/get-admin`, this.appendToken())
+  }
+
+  addReviewApi(id:any, reqBody:any){
+    return this.http.put(`${this.server_url}/product/${id}/review`,reqBody, this.appendToken())
+  }
+
 }

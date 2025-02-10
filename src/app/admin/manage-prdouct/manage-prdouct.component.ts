@@ -32,9 +32,11 @@ export class ManagePrdouctComponent {
       this.api.addProductApi(this.productDetails).subscribe({
         next: (res: any) => {
           alert('Product Add Successfully');
+          this.api.getChartData()
           this.productDetails = {};
           this.router.navigateByUrl('/admin/product');
           console.log(this.productDetails);
+
         },
         error: (reason: any) => {
           alert(reason.error);
@@ -56,6 +58,7 @@ export class ManagePrdouctComponent {
   editProduct(){
     this.api.updateProductApi(this.id, this.productDetails).subscribe((res:any)=>{
       alert("Product Update Successfully")
+      this.api.getChartData()
       this.productDetails = {}
       this.router.navigateByUrl('/admin/product')
     })

@@ -1,8 +1,6 @@
 <div class="h-svh bg-black flex justify-center items-center">
   <div class="px-10 py-4 w-[700px] border rounded-md">
-    <h1 class="text-center mb-5 text-white font-bold text-4xl pt-3">
-      Register
-    </h1>
+    <h1 class="text-center mb-5 text-white font-bold text-4xl pt-3">Login</h1>
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <div class="pb-5">
         <label for="email" class="text-white font-semibold pb-2">Email</label>
@@ -14,8 +12,7 @@
           name="email"
           formControlName="email"
         />
-        @if(loginForm.get('email')?.errors &&
-        loginForm.get('email')?.touched){
+        @if(loginForm.get('email')?.errors && loginForm.get('email')?.touched){
         <small class="block p-error text-red-600">
           <span>Password is required</span>
         </small>

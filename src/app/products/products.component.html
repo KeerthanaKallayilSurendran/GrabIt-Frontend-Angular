@@ -59,6 +59,12 @@
         <hr />
         }
       </div>
+      <button
+        class="bg-[#ae9b846b] text-white px-3 py-2 rounded mt-3"
+        (click)="showDialog()"
+      >
+        Add Review
+      </button>
     </div>
     <div></div>
   </div>
@@ -84,3 +90,40 @@
   </div>
 </div>
 <app-footer></app-footer>
+
+<p-dialog
+  header="Edit Profile"
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{ width: '25rem' }"
+>
+  <span class="p-text-secondary block mb-8">Add Your Review</span>
+  <div class="flex items-center gap-4 mb-8">
+    <label for="email" class="font-semibold w-24">Name</label>
+    <input [(ngModel)]="review.reviewerName" pInputText id="email" class="flex-auto" autocomplete="off" />
+  </div>
+  <div class="flex items-center gap-4 mb-8">
+    <label for="email" class="font-semibold w-24">Email</label>
+    <input [(ngModel)]="review.reviewerEmail" pInputText id="email" class="flex-auto" autocomplete="off" />
+  </div>
+  <div class="flex items-center gap-4 mb-4">
+    <label for="username" class="font-semibold w-24">Rating</label>
+    <input [(ngModel)]="review.rating" pInputText id="username" class="flex-auto" autocomplete="off" />
+  </div>
+  <div class="flex items-center gap-4 mb-8">
+    <label for="email" class="font-semibold w-24">Comment</label>
+    <input [(ngModel)]="review.comment" pInputText id="email" class="flex-auto" autocomplete="off" />
+  </div>
+  <div class="flex items-center gap-4 mb-8">
+    <label for="email" class="font-semibold w-24">Date</label>
+    <p-datepicker [(ngModel)]="review.date"  dateFormat="dd.mm.yy" />
+  </div>
+  <div class="flex justify-end gap-2">
+    <button (click)="addReview()" class="bg-[#ae9b846b] text-white px-3 py-2 rounded mt-3">
+      Save
+    </button>
+    <button class="bg-[#ae9b846b] text-white px-3 py-2 rounded mt-3">
+      Cancel
+    </button>
+  </div>
+</p-dialog>

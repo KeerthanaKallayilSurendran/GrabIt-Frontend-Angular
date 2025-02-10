@@ -1,8 +1,123 @@
-<div class="grid grid-cols-9 gap-2">
-  <div class="col-span-2">
+<div class="grid grid-cols-9">
+  <div *ngIf="isSidebarOpen" class="col-span-1">
     <app-sidebar></app-sidebar>
   </div>
-  <div class="col-span-7">
-    <p>dashboard works!</p>
+  <div [class]="colWidthNav">
+    <div
+      class="bg-black h-12 shadow text-white px-3 flex justify-between items-center"
+    >
+      <button (click)="sidebar()">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+      <h1 class="font-bold text-2xl">Welcome to Admin Dashborad</h1>
+      <button (click)="logout()">
+        Logout<i class="fa-solid fa-right-from-bracket ps-1"></i>
+      </button>
+    </div>
+    <div class="flex justify-evenly items-center gap-1 pt-5 text-white">
+      <div class="bg-slate-600 flex justify-center rounded p-4">
+        <i class="fa-solid fa-users text-5xl me-3"></i>
+        <div>
+          <h3 class="text-xl">Customers</h3>
+          <h2 class="font-bold text-2xl">{{ userCount }}</h2>
+        </div>
+      </div>
+      <div class="bg-zinc-600 flex justify-center rounded p-4">
+        <i class="fa-solid fa-cart-shopping me-3 text-5xl"></i>
+        <div>
+          <h3 class="text-xl">Products</h3>
+          <h2 class="font-bold text-2xl">{{ productCount }}</h2>
+        </div>
+      </div>
+      <div class="bg-gray-600 flex justify-center rounded p-4">
+        <i class="fa-solid fa-box me-3 text-5xl"></i>
+        <div>
+          <h3 class="text-xl">Orders</h3>
+          <h2 class="font-bold text-2xl">{{ orderCount }}</h2>
+        </div>
+      </div>
+      <div class="bg-neutral-600 flex justify-center rounded p-4">
+        <i class="fa-solid fa-message me-3 text-5xl"></i>
+        <div>
+          <h3 class="text-xl">Message</h3>
+          <h2 class="font-bold text-2xl">{{ messageCount }}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-12 pt-5">
+      <div class="col-span-7 p-3">
+        <highcharts-chart
+          [Highcharts]="Highcharts"
+          [options]="chartOptions"
+          style="width: 100%; height: 400px; display: block"
+        ></highcharts-chart>
+      </div>
+      <p-datepicker
+        class="max-w-full col-span-5"
+        [(ngModel)]="date"
+        [inline]="true"
+        [showWeek]="true"
+      />
+    </div>
+    <button
+      class="bg-black text-white px-3 py-2 rounded ms-5"
+      (click)="showDialog()"
+    >
+      Edit Admin Details
+    </button>
+    <p-dialog
+      header="Edit Profile"
+      [modal]="true"
+      [(visible)]="visible"
+      [style]="{ width: '25rem' }"
+    >
+      <span class="p-text-secondary block mb-8">Update your information.</span>
+      <div class="flex items-center gap-4 mb-4">
+        <label for="username" class="font-semibold w-24">Username</label>
+        <input
+          [(ngModel)]="adminDetails.username"
+          pInputText
+          id="username"
+          class="flex-auto"
+          autocomplete="off"
+        />
+      </div>
+      <div class="flex items-center gap-4 mb-8">
+        <label for="email" class="font-semibold w-24">Email</label>
+        <input
+          type="email"
+          pInputText
+          id="email"
+          class="flex-auto"
+          autocomplete="off"
+          [(ngModel)]="adminDetails.email"
+        />
+      </div>
+      <div class="flex items-center gap-4 mb-8">
+        <label for="password" class="font-semibold w-24">Password</label>
+        <input
+          type="password"
+          pInputText
+          id="password"
+          class="flex-auto"
+          autocomplete="off"
+          [(ngModel)]="adminDetails.password"
+        />
+      </div>
+      <div class="flex justify-end gap-2">
+        <button
+          (click)="close()"
+          class="bg-red-800 text-white px-2 py-1 rounded"
+        >
+          Cancel
+        </button>
+        <button
+          (click)="editAdminDetails()"
+          class="bg-white text-black px-2 py-1 rounded"
+        >
+          Update
+        </button>
+      </div>
+    </p-dialog>
   </div>
 </div>
