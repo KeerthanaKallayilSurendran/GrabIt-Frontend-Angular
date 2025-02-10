@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ApiService {
-  server_url = 'http://localhost:3000';
+  server_url = 'https://grabit-backend.onrender.com';
 
   constructor(private http: HttpClient) {}
 
